@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklist | Decifra-te, ou te devora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #10b981; /* Eldritch Green */
+            --dark-bg: #050505; 
+            --card-bg: #0a0c0b; 
+            --border: #161d1a; 
+            --glow: rgba(16, 185, 129, 0.15);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: #94a3b8; scroll-behavior: smooth; overflow-x: hidden; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .glass-nav { background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(16, 185, 129, 0.1); }
+        .blacklist-card { background: var(--card-bg); border: 1px solid var(--border); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+        .blacklist-card:hover { border-color: var(--accent); box-shadow: 0 0 40px rgba(0,0,0,1), 0 0 20px var(--glow); transform: translateY(-8px) scale(1.01); }
+        .surreal-accent { position: relative; padding-left: 1.5rem; }
+        .surreal-accent::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 1px; background: linear-gradient(to bottom, transparent, var(--accent), transparent); }
+        
+        /* Efeito de Fumaça Animada */
+        .smoke-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; opacity: 0.35; filter: blur(60px); }
+        .smoke-particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 75%); animation: drift 20s infinite alternate ease-in-out; }
+        @keyframes drift { 0% { transform: translate(-10%, -10%) scale(1); } 50% { transform: translate(10%, 15%) scale(1.3); } 100% { transform: translate(-5%, -5%) scale(1.1); } }
+        
+        /* Granulação de Filme Clássico */
+        body::after { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); opacity: 0.04; pointer-events: none; z-index: 9999; }
+        .abyssal-glow { text-shadow: 0 0 10px var(--glow); }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-900 selection:text-white">
+
+    <!-- Camada de Fumaça Eldritch -->
+    <div class="smoke-overlay">
+        <div class="smoke-particle" style="width: 600px; height: 600px; top: -100px; left: -100px;"></div>
+        <div class="smoke-particle" style="width: 800px; height: 800px; bottom: -200px; right: -200px; animation-delay: -5s;"></div>
+    </div>
+
+    <!-- Navegação Superior -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 border border-emerald-500/20 flex items-center justify-center bg-emerald-500/5 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <span class="text-emerald-500 font-bold text-xl italic abyssal-glow">B</span>
+                </div>
+                <div>
+                    <h1 class="text-white font-bold tracking-[0.3em] text-sm uppercase abyssal-glow leading-none">Blacklist</h1>
+                    <p class="text-[9px] text-emerald-900 font-bold uppercase tracking-[0.3em] italic">Decifra-te, ou te devora</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-[9px] font-bold text-emerald-800 uppercase tracking-widest leading-none mb-1">Informativo Oficial: 21 . 03 . 2026</p>
+                <p class="text-xs font-medium text-emerald-500/30 uppercase tracking-[0.1em]">Blacklist Protocol</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Abertura Poética -->
+    <header class="pt-48 pb-32 px-6 border-b border-emerald-950/30 relative">
+        <div class="max-w-5xl mx-auto grid lg:grid-cols-3 gap-20 items-center relative z-20">
+            <div class="lg:col-span-2 space-y-12">
+                <span class="text-emerald-500 text-[10px] font-bold uppercase tracking-[0.6em] block opacity-60">I Entrada</span>
+                <h2 class="serif text-7xl text-white italic tracking-tighter abyssal-glow leading-none">O Corvo</h2>
+                <div class="text-2xl text-slate-400 font-light italic leading-relaxed surreal-accent space-y-8">
+                    <p>Numa meia-noite agreste, quando eu lia, lento e triste,<br>Vagos curiosos livros de uma antiga ciência,<br>E quase adormecia, ouvi o que pareceu<br>O som de alguém que batia levemente à minha porta.</p>
+                    <p>"É um visitante", eu disse, "que bate à porta do meu quarto —<br>Apenas isto e nada mais."</p>
+                    <p>Mas o Corvo, voando de novo, disse apenas: "Nunca mais".</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="h-[1px] w-24 bg-emerald-500/30"></div>
+                    <span class="text-2xl font-bold text-white tracking-[0.2em] abyssal-glow uppercase">Edgar Allan Poe</span>
+                </div>
+            </div>
+            <aside class="space-y-10 bg-emerald-950/5 p-10 border border-emerald-500/10 backdrop-blur-sm">
+                <div>
+                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4">Análise da Sombra</h4>
+                    <p class="text-sm text-slate-500 italic leading-relaxed">Publicado em 1845, este poema é a obra máxima do horror gótico e do simbolismo. A tradução utilizada é de Fernando Pessoa, que captou a precisão rítmica necessária para evocar a inevitabilidade da perda e da loucura.</p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4">O Arquiteto do Macabro</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed"><strong>Edgar Allan Poe (1809-1849):</strong> Pai da ficção policial e mestre do terror psicológico. Poe explorou os abismos da mente humana através da lógica fria e do misticismo sombrio.</p>
+                </div>
+            </aside>
+        </div>
+    </header>
+
+    <!-- Grade Multidisciplinar -->
+    <main class="max-w-7xl mx-auto px-6 py-40 relative z-20">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-32 gap-8">
+            <div class="space-y-6">
+                <h3 class="text-6xl font-black text-white tracking-tighter uppercase italic opacity-80 abyssal-glow">Sobre este Impermanente Mundo</h3>
+                <p class="text-emerald-950 max-w-xl font-medium italic text-lg leading-relaxed"></p>
+            </div>
+            <div class="hidden md:block text-right">
+                <span class="text-[140px] font-black text-emerald-500/[0.02] select-none leading-none abyssal-glow">BLACKLIST</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+            
+            <!-- GRUPO 1: SISTEMAS E MATÉRIA -->
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                        <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Geopolítica</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. O Corredor Económico Árabe-Indiano</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A criação de uma rede ferroviária e portuária ligando a Índia à Europa via Médio Oriente visa rivalizar com a Rota da Seda chinesa, alterando o equilíbrio do comércio eurasiático.</p>
+                        <a href="https://www.aljazeera.com/news/2023/9/10/what-is-the-india-middle-east-europe-economic-corridor" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest transition-colors">Aprofundamento →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Hidropolítica do Rio Nilo</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A Grande Barragem do Renascimento Etíope (GERD) coloca o Egipto e o Sudão numa tensão existencial pela gestão do caudal hídrico, definindo a segurança alimentar da África Oriental.</p>
+                        <a href="https://www.bbc.com/news/world-africa-53432948" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Aprofundamento →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Soberania dos Microchips</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A lei europeia "Chips Act" mobiliza 43 mil milhões de euros para duplicar a produção de semicondutores na UE até 2030, tentando reduzir a dependência crítica de Taiwan.</p>
+                        <a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-chips-act_en" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Aprofundamento →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. A Crise dos Refugiados Climáticos</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">O Banco Mundial estima que 216 milhões de pessoas serão forçadas a migrar internamente até 2050 devido à escassez de água e queda na produtividade agrícola em regiões tropicais.</p>
+                        <a href="https://www.worldbank.org/en/news/press-release/2021/09/13/climate-change-could-force-216-million-people-to-migrate-within-their-own-countries-by-2050" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Aprofundamento →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.642.316a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.823.362 2.25 2.25 0 01-3.833-1.574V4.103a2.25 2.25 0 013.921-1.43l.684.683a2.25 2.25 0 001.635.68h2.34a2.25 2.25 0 001.635-.68l.684-.683a2.25 2.25 0 013.921 1.43v10.708z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Ciência</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase mb-3">1. Computação Quântica em Proteínas</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">O uso de computadores quânticos para simular o envelhecimento de proteínas em tempo real promete acelerar a criação de fármacos para o Alzheimer em décadas.</p>
+                        <a href="https://www.nature.com/articles/d41586-023-03423-w" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Base Técnica →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Baterias de Estado Sólido</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A substituição do eletrólito líquido por cerâmico elimina o risco de incêndio e permite carregamentos de 0 a 80% em menos de 10 minutos para aviação elétrica.</p>
+                        <a href="https://www.science.org/doi/10.1126/science.abg5077" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Base Técnica →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Webb e as Primeiras Estrelas</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">O James Webb captou luz de estrelas da População III, os primeiros objetos luminosos a formarem-se após o Big Bang, compostos apenas de hidrogénio e hélio.</p>
+                        <a href="https://nasa.gov/webb-telescope-findings" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Base Técnica →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. Bio-impressão de Pele Viva</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Células estaminais do próprio paciente agora podem ser impressas em 3D para criar enxertos de pele com vasos sanguíneos funcionais para grandes queimados.</p>
+                        <a href="https://www.nih.gov/news-events/news-releases/3d-printing-skin" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Base Técnica →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRUPO 2: VIDA E COMPORTAMENTO -->
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                        <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Etologia</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase mb-3">1. Democracia em Formigas</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Formigas *Temnothorax* tomam decisões coletivas de migração através de um sistema de "quórum", onde a mudança só ocorre após consenso de 30% do grupo.</p>
+                        <a href="https://www.nature.com/articles/nature01234" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Espécies →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Cultura em Baleias de Esperma</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Diferentes clãs de baleias possuem "cliques" de vocalização distintos que servem como marcadores de identidade cultural e social, evitados por clãs rivais.</p>
+                        <a href="https://royalsocietypublishing.org/doi/10.1098/rsos.181454" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Espécies →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Planeamento em Corvos</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Corvos da Caledónia guardam ferramentas específicas para uso futuro, demonstrando a capacidade de prever necessidades biológicas além do momento presente.</p>
+                        <a href="https://science.org/doi/10.1126/science.aaf1759" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Espécies →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. Altruísmo em Morcegos-Vampiro</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Quando um morcego não consegue alimentar-se, outro membro partilha sangue, estabelecendo uma rede de reciprocidade baseada no reconhecimento individual.</p>
+                        <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(19)31110-5" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Espécies →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Nutrição</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase mb-3">1. Moringa Oleifera Ancestral</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Conhecida como "árvore milagrosa", contém 7 vezes mais vitamina C que a laranja e todos os aminoácidos essenciais, sendo base da medicina indiana.</p>
+                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5920421/" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Laboratório →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Shilajit e Ácido Fúlvico</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Resina dos Himalaias rica em minerais traço e ácido fúlvico, que atua como catalisador mitocondrial para a produção de energia ATP celular.</p>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/23733436/" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Laboratório →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Antocianinas e Longevidade</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Pigmentos roxos em frutos silvestres que ativam sirtuínas, protegendo o DNA contra o stress oxidativo e a senescência celular precoce.</p>
+                        <a href="https://www.nature.com/articles/s41598-020-72127-z" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Laboratório →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. Microbioma e Serotonina</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Cerca de 90% da serotonina é produzida por bactérias intestinais; a diversidade de fibras na dieta modula diretamente o estado emocional.</p>
+                        <a href="https://www.health.harvard.edu/diseases-and-conditions/the-gut-brain-connection" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Laboratório →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRUPO 3: SOCIEDADE E LINGUAGEM -->
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Antropologia</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Migrações Tupi-Guarani</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A expansão Tupi pelo continente sul-americano foi guiada pelo mito da "Terra sem Males", gerando uma homogeneidade linguística em áreas vastas.</p>
+                        <a href="https://www.britannica.com/topic/Tupi-people" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Estudo Social →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Arte Rupestre de Arnhem</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Pinturas na Austrália datadas de 60.000 anos revelam uma tradição oral contínua que preserva a fauna extinta do Pleistoceno na memória coletiva.</p>
+                        <a href="https://www.nationalgeographic.com/culture/article/aboriginal-rock-art-australia" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Estudo Social →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Estratificação Viking</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">O status social viking era altamente fluido e baseado na distribuição de despojos e hospitalidade, contrastando com o feudalismo rígido da Europa.</p>
+                        <a href="https://www.history.com/news/viking-society-hierarchy" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Estudo Social →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. A IA e o Neotribalismo</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Como os algoritmos de rede social estão a desintegrar a identidade nacional em favor de micronarrativas tribais digitais globais e isoladas.</p>
+                        <a href="https://www.ucl.ac.uk/anthropology/digital-anthropology" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Estudo Social →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blacklist-card p-10 rounded-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Etimologia</h2>
+                </div>
+                <div class="space-y-12 flex-grow text-slate-500">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2">1. Sinistro</h4>
+                        <p class="text-sm">Do latim *sinister* (lado esquerdo). Na tradição romana, sinais vindos da esquerda eram presságios de mau agouro e perigo iminente.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2">2. Pânico</h4>
+                        <p class="text-sm">Deriva do deus grego Pã. Refere-se ao terror súbito e irracional que ele causava aos viajantes solitários nas florestas silenciosas.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2">3. Hipócrita</h4>
+                        <p class="text-sm">Do grego *hypokrites*, significava "ator". Descrevia quem usava uma máscara no palco para interpretar uma verdade que não era sua.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2">4. Alucinogénio</h4>
+                        <p class="text-sm">Do latim *alucinari* (vagar na mente) + *genes* (gerar). Significa literalmente "aquilo que faz a mente vagar" para além do real.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOCO 4: MENTE E COGNIÇÃO -->
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9l-.707.707M12 18v3m4.243-4.243l.707.707M4.932 4.932l.707.707M12 21a9 9 0 110-18 9 9 0 010 18z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Neurociência</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Córtex Pré-frontal e Gratificação</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A área responsável pelo adiamento de recompensa; a sua integridade define a capacidade humana de planeamento e resistência a impulsos.</p>
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.1108525108" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Arquivos Neurais →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Eixo Microbiota-Intestino</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Sinais bioquímicos entre bactérias intestinais e o cérebro controlam a neuroinflamação e o desenvolvimento de depressão clínica.</p>
+                        <a href="https://www.nature.com/articles/nrn.2017.114" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Arquivos Neurais →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Neuroepigenética</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Como experiências traumáticas podem deixar marcadores químicos em histonas, alterando o comportamento cerebral de gerações futuras.</p>
+                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4214477/" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Arquivos Neurais →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. Optogenética</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">O uso de luz para ativar neurónios específicos geneticamente modificados, permitindo o controlo externo de memórias e respostas motoras.</p>
+                        <a href="https://www.nature.com/articles/nmeth.1523" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Arquivos Neurais →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blacklist-card p-10 rounded-sm">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Psicologia</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Efeito Halo</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Viés cognitivo onde a nossa percepção global sobre uma pessoa ("ela é simpática") influencia a nossa avaliação de traços específicos.</p>
+                        <a href="https://psychologytoday.com/us/basics/halo-effect" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Mecânica Mental →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">2. Adaptação Hedónica</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Tendência humana de regressar rapidamente a um nível estável de felicidade após grandes eventos positivos ou negativos.</p>
+                        <a href="https://apa.org/news/hedonic-adaptation" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Mecânica Mental →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">3. Teoria da Mente</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Capacidade de atribuir estados mentais a si mesmo e aos outros, essencial para a navegação social e a compreensão de intenções.</p>
+                        <a href="https://www.simplypsychology.org/theory-of-mind.html" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Mecânica Mental →</a>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-3">4. Viés da Disponibilidade</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">A tendência para sobrestimar a probabilidade de eventos baseados na facilidade com que nos recordamos de exemplos (ex: medo de aviões).</p>
+                        <a href="https://www.scientificamerican.com/article/the-availability-bias/" class="text-[9px] font-bold text-emerald-900 uppercase mt-4 inline-block tracking-widest">Mecânica Mental →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOCO 5: EXPRESSÃO E ESPÍRITO -->
+            <section class="blacklist-card p-10 rounded-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    </div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Arte</h2>
+                </div>
+                <div class="space-y-12 flex-grow">
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2 italic">O Altar de Gante</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Obra de Jan van Eyck que introduziu o realismo microscópico através do uso magistral da tinta a óleo, captando a luz na jóia e no tecido.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2 italic">Ukiyo-e e a Efemeridade</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Xilogravuras japonesas que celebravam o "mundo flutuante"; influenciaram o impressionismo ao focar na luz e no quotidiano fugaz.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2 italic">Arte Cinética</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Movimento que introduziu o movimento real ou a ilusão de óptica na escultura, transformando o espectador em participante ativo.</p>
+                    </div>
+                    <div class="surreal-accent">
+                        <h4 class="text-xs font-bold text-white uppercase mb-2 italic">O Simbolismo de Moreau</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Gustave Moreau usava mitos clássicos para retratar o decadente e o místico, criando atmosferas densas e sobrenaturais.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blacklist-card bg-black p-12 md:col-span-2 lg:col-span-3 border-emerald-950/20 relative overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,1)]">
+                <div class="absolute -right-40 -top-40 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] group-hover:bg-emerald-500/10 transition-colors duration-1000"></div>
+                <div class="relative z-10 max-w-5xl mx-auto space-y-12">
+                    <span class="text-emerald-500 text-[10px] font-bold uppercase tracking-[0.6em] opacity-40">VII</span>
+                    <h2 class="serif text-5xl text-white italic tracking-tighter abyssal-glow">Misticismo</h2>
+                    <div class="grid md:grid-cols-2 gap-16 items-start">
+                        <div class="text-slate-400 text-xl font-light italic leading-relaxed space-y-8 surreal-accent">
+                            <p>O Manifesto Rosacruz ("Fama Fraternitatis", 1614) propunha uma reforma universal do conhecimento através da fusão entre a ciência, a medicina e a espiritualidade alquímica. A irmandade secreta operava sob o véu do anonimato, prometendo a cura gratuita aos doentes.</p>
+                            <p>Este misticismo estabeleceu a ideia de um "governo invisível" de sábios, influenciando a fundação da Royal Society e o racionalismo iluminista, provando que o ocultismo serviu de estufa para a ciência moderna.</p>
+                        </div>
+                        <div class="bg-emerald-950/5 p-10 border border-emerald-500/5 backdrop-blur-md">
+                            <h4 class="text-emerald-500 font-bold mb-6 text-[10px] uppercase tracking-widest abyssal-glow">Documentação Hermética</h4>
+                            <p class="text-sm text-slate-500 italic border-l-2 border-emerald-500/20 pl-6 mb-10 leading-relaxed">
+                                "Ignis Aurum Probat, Miseria Fortes Viros." — O fogo prova o ouro, a miséria os homens fortes.
+                            </p>
+                            <a href="https://www.britannica.com/topic/Rosicrucian" class="inline-flex items-center gap-4 bg-emerald-700 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(5,150,105,0.2)] hover:bg-emerald-600 transition-all">Estudo Integral</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="py-48 px-6 border-t border-emerald-950/20 bg-black relative z-20 overflow-hidden">
+        <div class="max-w-5xl mx-auto space-y-24">
+            <div class="text-center">
+                <span class="text-emerald-900 text-[10px] font-bold uppercase tracking-[0.6em] abyssal-glow">Saída</span>
+            </div>
+            
+            <div class="bg-emerald-950/5 p-20 rounded-sm border border-emerald-500/5 relative shadow-[0_0_100px_rgba(0,0,0,0.8)]">
+                <div class="absolute -top-16 -left-16 text-[18rem] serif text-emerald-500/5 pointer-events-none italic font-black select-none">“</div>
+                <div class="relative z-10 space-y-12">
+                    <p class="text-3xl md:text-4xl serif text-slate-300 leading-relaxed italic text-center px-16 font-extralight tracking-tight abyssal-glow">
+                        “O que é real? Como você define o real? Se você está falando sobre o que você pode sentir, cheirar, provar e ver, então 'real' são apenas sinais elétricos interpretados pelo seu cérebro.”
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 pt-16 border-t border-emerald-500/10">
+                        <div class="space-y-4 text-center md:text-left">
+                            <h4 class="text-xl font-bold text-white tracking-[0.2em] uppercase abyssal-glow">Clarice Lispector</h4>
+                            <p class="text-sm font-medium text-emerald-500 uppercase tracking-widest italic opacity-60">A Paixão Segundo G.H. (1964)</p>
+                        </div>
+                        <div class="max-w-md text-sm text-zinc-500 leading-relaxed text-center md:text-right italic">
+                            <p><strong>Exegese:</strong> Clarice explora a desintegração da identidade humana burguesa frente à crueza da vida biológica pura, representada pelo encontro com uma barata.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-24 space-y-4 opacity-30">
+                <p class="text-[9px] font-bold text-emerald-900 uppercase tracking-[0.6em]">Protocolo Blacklist | Gemini Framework</p>
+                <p class="text-[9px] text-emerald-950 uppercase tracking-[0.3em]">David Richard . Decifra-te, ou te devora . 2026</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
