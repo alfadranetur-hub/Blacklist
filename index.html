@@ -110,7 +110,7 @@
 
         .abyssal-glow { text-shadow: 0 0 20px var(--glow); }
 
-        /* Terminal de Pesquisa Lateral (Sidebar Minimizável) */
+        /* TERMINAL LATERAL */
         .side-terminal {
             position: fixed;
             right: 0;
@@ -126,54 +126,22 @@
             box-shadow: -20px 0 60px rgba(0,0,0,0.9);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
-        .side-terminal.minimized {
-            transform: translateY(-50%) translateX(380px);
-        }
-
+        .side-terminal.minimized { transform: translateY(-50%) translateX(380px); }
         .terminal-toggle {
-            position: absolute;
-            left: -45px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 120px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-right: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 0.7rem 0 0 0.7rem;
-            color: var(--accent);
-            transition: 0.3s;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            position: absolute; left: -45px; top: 50%; transform: translateY(-50%);
+            width: 45px; height: 100px; background: var(--card-bg); border: 1px solid var(--border); border-right: none;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            border-radius: 0.7rem 0 0 0.7rem; color: var(--accent); transition: 0.3s;
         }
         .terminal-toggle:hover { background: rgba(16, 185, 129, 0.1); }
-
         .search-input {
-            background: transparent;
-            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
-            color: #ffffff;
-            width: 100%;
-            padding: 0.7rem 0;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
+            background: transparent; border-bottom: 1px solid rgba(16, 185, 129, 0.3); color: #ffffff;
+            width: 100%; padding: 0.7rem 0; font-size: 0.9rem; outline: none; transition: 0.3s;
         }
         .search-input:focus { border-color: var(--accent); }
         .loading-spinner { display: none; width: 18px; height: 18px; border: 2px solid var(--accent); border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        #search-result {
-            max-height: 50vh;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) transparent;
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
+        #search-result { max-height: 45vh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; font-size: 0.85rem; color: #94a3b8; }
     </style>
 </head>
 <body class="antialiased selection:bg-emerald-900 selection:text-white">
@@ -202,7 +170,7 @@
         </div>
     </nav>
 
-    <!-- Terminal de Pesquisa Lateral -->
+    <!-- Terminal Lateral -->
     <aside id="side-terminal" class="side-terminal minimized">
         <div class="terminal-toggle" onclick="toggleTerminal()">
             <span id="toggle-icon">🔍</span>
@@ -211,7 +179,7 @@
             <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-[0.4em]">Deep Research</span>
             <div id="search-loading" class="loading-spinner"></div>
         </div>
-        <input type="text" id="deep-search-input" class="search-input" placeholder="Exegese de conceito..." onkeypress="handleSearch(event)">
+        <input type="text" id="deep-search-input" class="search-input" placeholder="Exegese técnica..." onkeypress="handleSearch(event)">
         <div id="search-result" class="mt-8 leading-relaxed italic hidden"></div>
     </aside>
 
@@ -258,7 +226,7 @@
             
             <!-- 1. GEOPOLÍTICA -->
             <section class="blacklist-card rounded-sm">
-                <div class="p-10 border-b border-emerald-900/20">
+                <div class="p-10 border-b border-emerald-900/20 bg-emerald-500/[0.01]">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Geopolítica</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
@@ -483,14 +451,12 @@
                         <div class="text-slate-100 text-xl font-light italic leading-relaxed space-y-10 surreal-accent">
                             <p>Durante quase dois milénios, a elite intelectual e política da Grécia Antiga viajava até Elêusis para ritos de iniciação secretos dedicados a Deméter e Perséfone. O objetivo era técnico e existencial: erradicar o medo da morte através de uma experiência direta de renascimento psíquico. O rito culminava no interior do *Telesterion*, um templo de acústica desenhada para a indução do êxtase coletivo.</p>
                             <p>O ponto alto da iniciação envolvia a ingestão do *Kykeon*, bebida ritualística que pesquisadores modernos sugerem conter ergótipo, um precursor natural do LSD presente nos fungos do centeio. Esta "tecnologia de visão" permitia ao iniciado contemplar as verdades arquetípicas da vida e da morte em um estado de hiperlucidez. Ao emergir das câmaras subterrâneas, o indivíduo não mais temia a dissolução biológica, percebendo-se como parte de um fluxo cósmico ininterrupto.</p>
-                            <p>Esta experiência fundou as bases do idealismo metafísico ocidental, provando que a filosofia platónica tem raízes profundas num êxtase bioquímico controlado e ritualizado, onde o sagrado é alcançado através da exaustão sensorial e da iluminação súbita.</p>
                         </div>
                         <div class="bg-emerald-950/5 p-10 border border-emerald-500/5 backdrop-blur-md">
                             <h4 class="text-emerald-500 font-bold mb-6 text-[10px] uppercase tracking-widest abyssal-glow">Manuscrito</h4>
                             <div class="text-sm text-slate-400 italic border-l-2 border-emerald-500/20 pl-6 mb-10 leading-relaxed space-y-8">
                                 <p>"Feliz é aquele que, tendo visto estas coisas, entra no mundo subterrâneo; ele conhece o fim da vida e conhece o seu início dado por Zeus. Ele não é mais um estranho entre as sombras, mas um cidadão da luz que nunca se apaga. Aquele que atravessa o véu de Elêusis morre antes de morrer, e por isso vive para sempre na memória do Ser." — Píndaro</p>
                                 <p>Este fragmento é uma das poucas alusões permitidas ao rito de Elêusis. Píndaro, ele próprio um iniciado e 'epoptes' (aquele que vê), descreve a 'Gnosis' como uma tecnologia de libertação absoluta: a percepção técnica de que a morte biológica é apenas uma transmutação da consciência. O Manuscrito atesta que a experiência ritualística não era uma simples doutrina teológica, mas uma evidência sensorial que removia o véu do medo que paralisa a vontade humana.</p>
-                                <p>Através deste testemunho atávico, compreendemos que a civilização clássica utilizava o misticismo como uma ferramenta de estabilidade social e coragem política, fundamentando a soberania do espírito sobre a impermanência ruidosa da matéria e do caos temporal.</p>
                             </div>
                             <a href="https://www.britannica.com/topic/Eleusinian-Mysteries" target="_blank" class="inline-flex items-center gap-4 bg-emerald-700 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(5,150,105,0.2)] hover:bg-emerald-600 transition-all">Estudo Integral</a>
                         </div>
@@ -534,7 +500,9 @@
     </footer>
 
     <script>
-        const apiKey = ""; // Ambiente fornece a chave em tempo de execução
+        // David: Introduza a sua chave API Gemini entre as aspas abaixo.
+        // Recorde: Se publicar no GitHub, restrinja a chave ao seu domínio davidrichard.github.io no Google Cloud.
+        const apiKey = ""; 
 
         function toggleTerminal() {
             const terminal = document.getElementById('side-terminal');
@@ -548,16 +516,30 @@
                 const query = document.getElementById('deep-search-input').value;
                 const resultDiv = document.getElementById('search-result');
                 const loading = document.getElementById('search-loading');
-
                 if (!query) return;
 
                 resultDiv.classList.add('hidden');
                 loading.style.display = 'block';
 
-                const systemPrompt = "És um assistente editorial do periódico 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo solicitado, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal.";
+                const systemPrompt = "És um assistente editorial da 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal.";
+                
+                const fetchWithRetry = async (url, options, retries = 5, delay = 1000) => {
+                    for (let i = 0; i < retries; i++) {
+                        try {
+                            const res = await fetch(url, options);
+                            if (res.ok) return res;
+                            if (res.status === 429 || res.status >= 500) throw new Error();
+                            break;
+                        } catch (e) {
+                            if (i === retries - 1) throw e;
+                            await new Promise(r => setTimeout(r, delay));
+                            delay *= 2;
+                        }
+                    }
+                };
 
                 try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -566,14 +548,12 @@
                         })
                     });
                     
-                    if (!response.ok) throw new Error('API Fail');
                     const data = await response.json();
                     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem dados analíticos.";
-                    
                     resultDiv.innerHTML = `<p class="border-l-2 border-emerald-500/30 pl-4 py-2">${text}</p>`;
                     resultDiv.classList.remove('hidden');
                 } catch (e) {
-                    resultDiv.innerHTML = "<p class='text-red-500/50 uppercase text-[10px] tracking-widest'>Erro na recuperação de dados.</p>";
+                    resultDiv.innerHTML = "<p class='text-red-500/50 uppercase text-[10px] tracking-widest'>Erro na recuperação de dados. Verifique a API Key.</p>";
                     resultDiv.classList.remove('hidden');
                 } finally {
                     loading.style.display = 'none';
