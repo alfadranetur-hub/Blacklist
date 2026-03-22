@@ -440,7 +440,7 @@
                     </div>
                     <div class="individual-point">
                         <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">3. Hipócrita e o Palco Grego</h4>
-                        <p class="text-sm text-white leading-relaxed">Do grego *'hypokrites'* (ator). Originalmente descrevia o intérprete que usava uma máscara no palco para assumir uma verdade fictícia perante o público. O termo transmutou-se para descrever quem finge ser o que não é para cumprir um papel na assembleia pública social.</p>
+                        <p class="text-sm text-white leading-relaxed">Do grego *'hypokrites'* (actor). Originalmente descrevia o intérprete que usava uma máscara no palco para assumir uma verdade fictícia perante o público. O termo transmutou-se para descrever quem finge ser o que não é para cumprir um papel na assembleia pública social.</p>
                     </div>
                     <div class="individual-point">
                         <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">4. Nostalgia e a Dor do Regresso</h4>
@@ -533,6 +533,7 @@
 
     <script>
         // TOKEN DE INTERFACE DEFINIDO PELO UTILIZADOR
+        // David: Certifique-se de que a 'Generative Language API' está ATIVA no Google Cloud Console.
         const apiKey = "AIzaSyBFNSm4wx3hX-9irMkCmZTsD69bzKf39IU"; 
 
         function toggleTerminal() {
@@ -553,25 +554,39 @@
                 resultDiv.classList.add('hidden');
                 loading.style.display = 'block';
 
-                const systemPrompt = "És um assistente editorial do periódico 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo solicitado, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal.";
+                // Prompt especializado para exegese analítica
+                const systemPrompt = "És um assistente editorial do periódico 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo solicitado, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal com tom clínico e analítico.";
 
                 const fetchWithRetry = async (url, options, retries = 5, delay = 1000) => {
                     for (let i = 0; i < retries; i++) {
                         try {
                             const res = await fetch(url, options);
                             if (res.ok) return res;
-                            if (res.status === 429 || res.status >= 500) throw new Error("Retryable error");
-                            break;
+                            
+                            // Se o erro for 403 (Proibido), é provável que a API não esteja ativa ou a chave seja inválida.
+                            // Se for 404, o modelo ou endpoint pode estar incorreto.
+                            if (res.status === 403 || res.status === 404) {
+                                const errData = await res.json();
+                                throw new Error(`HTTP ${res.status}: ${errData.error?.message || 'Acesso negado'}`);
+                            }
+                            
+                            if (res.status === 429 || res.status >= 500) {
+                                await new Promise(r => setTimeout(r, delay));
+                                delay *= 2;
+                                continue;
+                            }
+                            
+                            throw new Error(`HTTP ${res.status}`);
                         } catch (e) {
                             if (i === retries - 1) throw e;
-                            await new Promise(r => setTimeout(r, delay));
-                            delay *= 2;
                         }
                     }
                 };
 
                 try {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                    // Endpoint utilizando v1beta para garantir compatibilidade com systemInstruction
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+                    
                     const response = await fetchWithRetry(url, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -581,14 +596,18 @@
                         })
                     });
                     
-                    if (!response) throw new Error('API Fail');
                     const data = await response.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem dados analíticos disponíveis.";
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "A inferência não retornou dados analíticos.";
                     
                     resultDiv.innerHTML = `<div class="border-l-2 border-emerald-500/30 pl-4 py-2 text-slate-300 text-xs leading-relaxed">${text}</div>`;
                     resultDiv.classList.remove('hidden');
                 } catch (e) {
-                    resultDiv.innerHTML = "<p class='text-red-500/50 uppercase text-[9px] tracking-widest'>Falha na inferência técnica. Verifique a quota da API ou ligação.</p>";
+                    console.error(e);
+                    resultDiv.innerHTML = `<div class="text-red-500/70 uppercase text-[9px] tracking-widest space-y-2">
+                        <p>Falha na inferência técnica.</p>
+                        <p class="text-[8px] opacity-60">Causa: ${e.message}</p>
+                        <p class="text-[7px] lowercase italic">Dica: Verifique se a 'Generative Language API' está ativa no Google Cloud Console para esta chave.</p>
+                    </div>`;
                     resultDiv.classList.remove('hidden');
                 } finally {
                     loading.style.display = 'none';
