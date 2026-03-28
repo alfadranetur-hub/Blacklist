@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --accent: #10b981; /* Eldritch Green */
+            --accent: #10b981; /* Verde Eldritch */
             --dark-bg: #050505; 
             --card-bg: #0a0c0b; 
             --border: #161d1a; 
@@ -117,27 +117,28 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 100;
-            width: 380px;
-            background: rgba(10, 12, 11, 0.98);
+            width: 400px;
+            max-width: 90vw;
+            background: rgba(10, 12, 11, 0.99);
             border: 1px solid var(--border);
             border-right: none;
-            padding: 2rem;
-            border-radius: 1rem 0 0 1rem;
-            box-shadow: -20px 0 60px rgba(0,0,0,0.9);
+            padding: 2.5rem;
+            border-radius: 1.5rem 0 0 1.5rem;
+            box-shadow: -30px 0 90px rgba(0,0,0,1);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .side-terminal.minimized {
-            transform: translateY(-50%) translateX(380px);
+            transform: translateY(-50%) translateX(400px);
         }
 
         .terminal-toggle {
             position: absolute;
-            left: -45px;
+            left: -50px;
             top: 50%;
             transform: translateY(-50%);
-            width: 45px;
-            height: 120px;
+            width: 50px;
+            height: 140px;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-right: none;
@@ -145,34 +146,36 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            border-radius: 0.7rem 0 0 0.7rem;
+            border-radius: 1rem 0 0 1rem;
             color: var(--accent);
             transition: 0.3s;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            box-shadow: -10px 0 20px rgba(0,0,0,0.5);
         }
-        .terminal-toggle:hover { background: rgba(16, 185, 129, 0.1); }
+        .terminal-toggle:hover { background: rgba(16, 185, 129, 0.15); color: #fff; }
 
         .search-input {
             background: transparent;
             border-bottom: 1px solid rgba(16, 185, 129, 0.3);
             color: #ffffff;
             width: 100%;
-            padding: 0.7rem 0;
+            padding: 1rem 0;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.4s;
         }
         .search-input:focus { border-color: var(--accent); }
-        .loading-spinner { display: none; width: 18px; height: 18px; border: 2px solid var(--accent); border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .loading-spinner { display: none; width: 22px; height: 22px; border: 2px solid var(--accent); border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         #search-result {
-            max-height: 50vh;
+            max-height: 55vh;
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--accent) transparent;
             font-size: 0.85rem;
             color: #94a3b8;
+            margin-top: 2rem;
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -196,7 +199,7 @@
                 </div>
             </div>
             <div class="text-right">
-                <p class="text-[9px] font-bold text-emerald-800 uppercase tracking-widest leading-none mb-1">DATA: 21 . 03 . 2026</p>
+                <p class="text-[9px] font-bold text-emerald-800 uppercase tracking-widest leading-none mb-1">DATA: 22 . 03 . 2026</p>
                 <p class="text-xs font-medium text-emerald-500/30 uppercase tracking-[0.1em]">Blacklist Protocol</p>
             </div>
         </div>
@@ -208,11 +211,11 @@
             <span id="toggle-icon">🔍</span>
         </div>
         <div class="flex justify-between items-center mb-6">
-            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-[0.4em]">Deep Research</span>
+            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-[0.4em]">Inference Engine</span>
             <div id="search-loading" class="loading-spinner"></div>
         </div>
-        <input type="text" id="deep-search-input" class="search-input" placeholder="Exegese de conceito..." onkeypress="handleSearch(event)">
-        <div id="search-result" class="mt-8 leading-relaxed italic hidden"></div>
+        <input type="text" id="deep-search-input" class="search-input" placeholder="Comando para exegese..." onkeypress="handleSearch(event)">
+        <div id="search-result" class="hidden"></div>
     </aside>
 
     <!-- I ENTRADA -->
@@ -220,23 +223,23 @@
         <div class="max-w-5xl mx-auto grid lg:grid-cols-3 gap-20 items-center relative z-20">
             <div class="lg:col-span-2 space-y-12">
                 <span class="text-emerald-500 text-[10px] font-bold uppercase tracking-[0.6em] block opacity-60">I Entrada</span>
-                <h2 class="serif text-7xl text-white italic tracking-tighter abyssal-glow leading-none">O Corvo</h2>
+                <h2 class="serif text-7xl text-white italic tracking-tighter abyssal-glow leading-none">Mar</h2>
                 <div class="text-2xl text-slate-200 font-light italic leading-relaxed surreal-accent space-y-8">
-                    <p>Numa meia-noite agreste, quando eu lia, lento e triste,<br>Vagos curiosos livros de uma antiga ciência,<br>E quase adormecia, ou ouvi o que pareceu<br>O som de alguém que batia levemente à minha porta.</p>
+                    <p>De todos os lados o mar,<br>E o som das ondas que se quebram,<br>Neste lugar onde o tempo se demora,<br>E as sombras do passado se celebram.</p>
                 </div>
                 <div class="flex items-center gap-6">
                     <div class="h-[1px] w-24 bg-emerald-500/30"></div>
-                    <span class="text-2xl font-bold text-white tracking-[0.2em] abyssal-glow uppercase">Edgar Allan Poe</span>
+                    <span class="text-2xl font-bold text-white tracking-[0.2em] abyssal-glow uppercase">Sophia de Mello Breyner</span>
                 </div>
             </div>
-            <aside class="space-y-10 bg-emerald-950/5 p-10 border border-emerald-500/10 backdrop-blur-sm">
+            <aside class="space-y-10 bg-emerald-950/5 p-10 border border-emerald-500/10 backdrop-blur-sm text-zinc-400">
                 <div>
-                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4 font-bold">Sobre</h4>
-                    <p class="text-sm text-slate-300 leading-relaxed italic">Publicado em 1845, Poe utiliza a métrica matemática para induzir o horror psicológico. A tradução de Fernando Pessoa preserva a precisão rítmica necessária para evocar a inevitabilidade da loucura e da perda.</p>
+                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4 font-bold">A Poética da Lucidez</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed italic text-zinc-500">Sophia foi a poeta da claridade clássica. A sua obra é uma busca pelo rigor ético e pela harmonia entre o Logos e a Natureza, tratando a palavra como um cristal técnico de precisão existencial.</p>
                 </div>
                 <div>
-                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4">O Arquiteto do Macabro</h4>
-                    <p class="text-sm text-slate-300 leading-relaxed">Pai da ficção policial e mestre do terror psicológico, Poe explorou os abismos da mente humana através da lógica fria fundida ao misticismo sombrio, tratando o medo como uma engrenagem técnica.</p>
+                    <h4 class="text-[10px] font-bold text-emerald-900 uppercase tracking-widest mb-4">Ontologia Oceânica</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed text-zinc-600">Para a autora, o mar não é cenário, mas o elemento primordial onde a impermanência e a eternidade se fundem. É a base biológica e mística da soberania humana frente ao abismo.</p>
                 </div>
             </aside>
         </div>
@@ -250,7 +253,7 @@
                 <p class="text-emerald-900 max-w-xl font-medium italic text-lg leading-relaxed">...</p>
             </div>
             <div class="hidden md:block text-right">
-                <span class="text-[140px] font-black text-emerald-500/[0.02] select-none leading-none abyssal-glow">BLACKLIST</span>
+                <span class="text-[140px] font-black text-emerald-500/[0.02] select-none leading-none abyssal-glow uppercase">Analysis</span>
             </div>
         </div>
 
@@ -258,24 +261,19 @@
             
             <!-- 1. GEOPOLÍTICA -->
             <section class="blacklist-card rounded-sm">
-                <div class="p-10 border-b border-emerald-900/20">
+                <div class="p-10 border-b border-emerald-900/20 bg-emerald-500/[0.01]">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Geopolítica</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. O Corredor Económico Árabe-Indiano (IMEC)</h4>
-                        <p class="text-sm text-white leading-relaxed">O projeto IMEC visa estabelecer uma rede de transporte multimodal integrando a Índia, o Médio Oriente e a Europa via redes ferroviárias e portuárias massivas. Esta infraestrutura técnica serve como um contrapeso direto à Iniciativa Cinturão e Rota chinesa, otimizando a logística global de dados e hidrogénio verde, enquanto redefine o equilíbrio de poder no Sul Global.</p>
-                        <a href="https://www.bbc.com/news/world-asia-66774640" target="_blank" class="link-deep">Aprofundamento →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. O Triângulo do Lítio e a Soberania Verde</h4>
+                        <p class="text-sm text-white leading-relaxed">Chile, Bolívia e Argentina coordenam esforços para criar uma estrutura similar à OPEP para o lítio. Esta aliança técnica visa garantir o controle sobre a matéria-prima vital para a descarbonização global, desafiando o monopólio de refinação asiático.</p>
+                        <a href="https://www.economist.com/the-americas/2023/04/27/chile-plans-to-nationalise-its-lithium-industry" target="_blank" class="link-deep">Aprofundamento →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Hidropolítica e a Grande Barragem do Nilo Azul</h4>
-                        <p class="text-sm text-white leading-relaxed">A gestão hídrica da Barragem do Renascimento Etíope (GERD) gerou uma tensão de soberania inelutável no Corno de África. O controlo técnico do fluxo do Nilo Azul confere à Etiópia uma alavanca política sobre o Egito e o Sudão, transformando a segurança alimentar em uma variável de pressão geopolítica que desafia tratados coloniais obsoletos.</p>
-                        <a href="https://www.aljazeera.com/news/2023/9/10/ethiopia-says-filling-of-renaissance-dam-on-nile-is-complete" target="_blank" class="link-deep">Aprofundamento →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Soberania Digital e o European Chips Act</h4>
-                        <p class="text-sm text-white leading-relaxed">Com um investimento de 43 mil milhões de euros, a União Europeia tenta mitigar a sua dependência crítica de Taiwan no setor de semicondutores. O 'Chips Act' visa duplicar a quota de mercado europeu até 2030, tratando a produção local de microchips como uma engrenagem vital para a autonomia estratégica industrial e de defesa ocidental.</p>
-                        <a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-chips-act_en" target="_blank" class="link-deep">Aprofundamento →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. A Muralha de Silício de Seul</h4>
+                        <p class="text-sm text-white leading-relaxed">A Coreia do Sul projeta o maior centro de semicondutores do mundo até 2047. Com 471 mil milhões de euros, o objetivo é blindar a soberania tecnológica contra as flutuações logísticas no Estreito de Taiwan.</p>
+                        <a href="https://www.reuters.com/technology/south-korea-plans-worlds-largest-chip-hub-with-investments-471-bln-2024-01-15/" target="_blank" class="link-deep">Aprofundamento →</a>
                     </div>
                 </div>
             </section>
@@ -287,139 +285,102 @@
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Simulação Quântica de Proteínas</h4>
-                        <p class="text-sm text-white leading-relaxed">O uso de processadores quânticos para mapear o dobramento de proteínas permitiu prever anomalias moleculares ligadas ao Alzheimer com fidelidade atómica. Este marco acelera a descoberta de fármacos alvo em décadas, permitindo simulações de interações bioquímicas que os supercomputadores clássicos levariam milénios para processar com tal precisão.</p>
-                        <a href="https://www.nature.com/articles/d41586-023-03423-w" target="_blank" class="link-deep">Base Técnica →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Inteligência Orgânica (OI)</h4>
+                        <p class="text-sm text-white leading-relaxed">Neurónios cultivados em laboratório integrados a chips de silício demonstraram processamento de dados com consumo energético milhões de vezes inferior à IA clássica. A biocomputação emerge como a nova fronteira da eficiência técnica.</p>
+                        <a href="https://www.nature.com/articles/s41598-023-48135-2" target="_blank" class="link-deep">Base Técnica →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Baterias de Estado Sólido e Densidade</h4>
-                        <p class="text-sm text-white leading-relaxed">A transição do eletrólito líquido para cerâmicos estáveis permitiu o desenvolvimento de baterias com densidade energética superior a 500 Wh/kg. Este avanço técnico elimina o risco de fuga térmica e abre a via para a aviação elétrica de curto curso, reduzindo drasticamente a pegada de carbono logística global através de uma mudança radical na densidade da matéria energética.</p>
-                        <a href="https://www.science.org/doi/10.1126/science.abg5077" target="_blank" class="link-deep">Base Técnica →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Webb e as Primeiras Estrelas (Pop III)</h4>
-                        <p class="text-sm text-white leading-relaxed">O telescópio James Webb detetou luz infravermelha vinda de estrelas da População III, formadas apenas de hidrogénio e hélio logo após o Big Bang. Estas estruturas massivas forçaram uma reavaliação das leis da cosmologia clássica, provando que o universo primitivo era muito mais dinâmico e massivo do que as simulações padrão previam.</p>
-                        <a href="https://science.nasa.gov/missions/webb/" target="_blank" class="link-deep">Base Técnica →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. CRISPR In Vivo</h4>
+                        <p class="text-sm text-white leading-relaxed">A edição genética direta no fígado humano para tratar amiloidose provou eficácia em ensaios clínicos. O design biológico passa a atuar dentro do organismo vivo, reescrevendo o destino genético em tempo real.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 3. ANTROPOLOGIA -->
-            <section class="blacklist-card rounded-sm">
+            <section class="blacklist-card rounded-sm shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                 <div class="p-10 border-b border-emerald-900/20">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Antropologia</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Göbekli Tepe e a Revolução Sagrada</h4>
-                        <p class="text-sm text-white leading-relaxed">Com 11.000 anos, este sítio arqueológico na Turquia provou que a reunião ritualística e religiosa precedeu a agricultura. O ser humano tornou-se sedentário para estar perto do templo, e não por necessidade técnica alimentar, invertendo a lógica clássica da evolução civilizacional e colocando o sagrado como o motor central do urbanismo primitivo e da cooperação em massa.</p>
-                        <a href="https://www.smithsonianmag.com/history/gobekli-tepe-the-worlds-first-temple-83613665/" target="_blank" class="link-deep">Análise Social →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. LiDAR e Urbanismo Amazónico</h4>
+                        <p class="text-sm text-white leading-relaxed">Varreduras laser revelaram redes urbanas complexas pré-colombianas no Equador. A Amazónia foi uma paisagem antropogénica desenhada, refutando o mito técnico do 'vazio demográfico' selvagem.</p>
+                        <a href="https://www.science.org/doi/10.1126/science.adi6317" target="_blank" class="link-deep">Análise Social →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Matrilinealidade Mosuo no Himalaia</h4>
-                        <p class="text-sm text-white leading-relaxed">No Himalaia, os Mosuo mantêm uma estrutura onde o património e o nome passam estritamente através das mulheres. O 'casamento caminhante' dispensa a coabitação económica, baseando-se no desejo mútuo e na autonomia total, o que desafia a estrutura da família nuclear tradicional e oferece um modelo alternativo de organização social resiliente às pressões patriarcais externas.</p>
-                        <a href="https://www.nationalgeographic.com/culture/article/mosuo-china-matriarchy-society" target="_blank" class="link-deep">Análise Social →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Tribalismo e Algoritmos Digitais</h4>
-                        <p class="text-sm text-white leading-relaxed">A antropologia moderna estuda como os algoritmos replicam os mecanismos de parentesco ancestrais através de dados. Ao criarem 'bolhas de eco', estas tecnologias forçam ritos de pertença que fragmentam a identidade coletiva em micronações virtuais, onde o isolamento do outro é a regra técnica para a manutenção da coesão do grupo digital e da validação de dogmas.</p>
-                        <a href="https://www.ucl.ac.uk/anthropology/digital-anthropology" target="_blank" class="link-deep">Análise Social →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Herança Denisovana no Tibete</h4>
+                        <p class="text-sm text-white leading-relaxed">A adaptação tibetana à altitude provém de um gene herdado dos hominídeos Denisovanos. A evolução humana revela-se uma colagem de sistemas híbridos de resiliência biológica ancestral.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 4. SOCIOLOGIA -->
-            <section class="blacklist-card rounded-sm shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+            <section class="blacklist-card rounded-sm">
                 <div class="p-10 border-b border-emerald-900/20">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Sociologia</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Solidariedade Orgânica e Anomia</h4>
-                        <p class="text-sm text-white leading-relaxed">Émile Durkheim postulou que a interdependência técnica em sociedades complexas gera a 'solidariedade orgânica'. No entanto, a aceleração tecnológica desordenada pode induzir a 'anomia', um estado de desintegração social onde as normas perdem a sua eficácia reguladora, resultando em crises de identidade coletiva e fragmentação do tecido social.</p>
-                        <a href="https://www.britannica.com/topic/social-solidarity" target="_blank" class="link-deep">Estrutura Social →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Erosão do Silêncio (Byung-Chul Han)</h4>
+                        <p class="text-sm text-white leading-relaxed">Han analisa como a hipercomunicação digital destrói a introspeção analítica. O silêncio torna-se um bem escasso cuja ausência fragmenta o discurso político e a alma moderna.</p>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. A Racionalização de Max Weber</h4>
-                        <p class="text-sm text-white leading-relaxed">O conceito de 'Desencantamento do Mundo' descreve a transição de uma sociedade guiada pelo misticismo para uma dominada pela eficiência técnica e burocrática. Esta 'jaula de ferro' da racionalidade formal prioriza o cálculo e o resultado sobre o sentido humano, definindo a arquitetura psicológica das instituições modernas.</p>
-                        <a href="https://plato.stanford.edu/entries/weber/" target="_blank" class="link-deep">Estrutura Social →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. A Teoria da Alienação de Marx</h4>
-                        <p class="text-sm text-white leading-relaxed">Karl Marx analisou como a fragmentação técnica do trabalho separa o indivíduo do produto final da sua criação. Esta alienação não é apenas económica, mas existencial, transformando a atividade vital em um meio de sobrevivência mecânico e desprovido de conexão emocional com a essência produtiva humana.</p>
-                        <a href="https://www.britannica.com/topic/alienation-Marxism" target="_blank" class="link-deep">Estrutura Social →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Capitalismo de Vigilância</h4>
+                        <p class="text-sm text-white leading-relaxed">A extração behaveurista de dados transforma a vontade humana na nova mercadoria. A arquitetura institucional moderna prioriza o cálculo algorítmico sobre o sentido ético.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 5. NUTRIÇÃO -->
-            <section class="blacklist-card rounded-sm">
+            <section class="blacklist-card rounded-sm shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                 <div class="p-10 border-b border-emerald-900/20">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Nutrição</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Artepillin C da Própolis Verde</h4>
-                        <p class="text-sm text-white leading-relaxed">Derivada do Alecrim-do-Campo brasileiro, a própolis verde contém o Artepillin C, um fitoquímico com propriedades anticancerígenas comprovadas. Estudos moleculares mostram que ele induz a apoptose seletiva em células tumorais enquanto protege o tecido saudável, validando cientificamente o uso desta resina como um potente modulador do sistema imunológico em escala bioquímica.</p>
-                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3872021/" target="_blank" class="link-deep">Laboratório →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Hericenonas da Juba de Leão</h4>
+                        <p class="text-sm text-white leading-relaxed">O cogumelo *Hericium erinaceus* estimula o Fator de Crescimento Nervoso (NGF), regenerando bainhas de mielina. A nutrição fungística atua como suporte direto para a neuroplasticidade cognitiva.</p>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/31413233/" target="_blank" class="link-deep">Laboratório →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Eixo Microbiota-Intestino-Humor</h4>
-                        <p class="text-sm text-white leading-relaxed">O microbioma intestinal produz cerca de 95% da serotonina corporal. A diversidade de fibras na dieta modula diretamente os sinais vagais para o cérebro, influenciando o tratamento de depressão clínica e ansiedade através de intervenções nutricionais que tratam o sistema digestivo como o 'segundo cérebro' funcional do organismo, unindo a biologia à saúde mental.</p>
-                        <a href="https://www.health.harvard.edu/diseases-and-conditions/the-gut-brain-connection" target="_blank" class="link-deep">Laboratório →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Autofagia e Renovação por Jejum</h4>
-                        <p class="text-sm text-white leading-relaxed">A autofagia é o mecanismo técnico de 'limpeza' onde a célula decompõe e recicla os seus próprios componentes danificados. Ativada por períodos de restrição calórica, este processo é fundamental para a prevenção de doenças neurodegenerativas, agindo como um sistema interno de manutenção biológica que recicla proteínas obsoletas para gerar nova energia celular estável.</p>
-                        <a href="https://www.nobelprize.org/prizes/medicine/2016/summary/" target="_blank" class="link-deep">Laboratório →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Espermidina e Longevidade</h4>
+                        <p class="text-sm text-white leading-relaxed">Poliamina que mimetiza o jejum ao acionar a autofagia celular. Atua como agente técnico de manutenção biológica sem restrição calórica severa.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 6. NEUROCIÊNCIA -->
-            <section class="blacklist-card rounded-sm shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+            <section class="blacklist-card rounded-sm">
                 <div class="p-10 border-b border-emerald-900/20">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Neurociência</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Córtex Insular e Interoceção</h4>
-                        <p class="text-sm text-white leading-relaxed">A ínsula processa os sinais fisiológicos internos do organismo. Alta consciência insular está ligada a maior resiliência emocional, permitindo que o cérebro antecipe ameaças físicas e psicológicas através de sensações corporais precisas que funcionam como 'marcas somáticas' para a tomada de decisão intuitiva em ambientes de alta incerteza técnica.</p>
-                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6036814/" target="_blank" class="link-deep">Arquivos Neurais →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Rede de Modo Padrão (DMN) e o 'Eu'</h4>
+                        <p class="text-sm text-white leading-relaxed">O circuito responsável pela narrativa autobiográfica. A sua hiperatividade está ligada à depressão; a sua modulação técnica via meditação permite o 'silenciamento do ego'.</p>
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.1108525108" target="_blank" class="link-deep">Arquivos Neurais →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Poda Sináptica na Infância</h4>
-                        <p class="text-sm text-white leading-relaxed">O cérebro elimina milhares de conexões neurais ineficientes para otimizar as redes mais utilizadas durante o desenvolvimento. Este processo de escultura neural é essencial para a eficiência energética do cérebro adulto e para a precisão técnica na execução de competências motoras finas e na aquisição acelerada de novos sistemas de linguagem.</p>
-                        <a href="https://www.pnas.org/doi/10.1073/pnas.1208682109" target="_blank" class="link-deep">Arquivos Neurais →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Plasticidade da Mielina</h4>
-                        <p class="text-sm text-white leading-relaxed">Aprender novas competências motoras altera fisicamente a espessura da bainha de mielina nos axónios. Quanto mais espessa é a mielina, maior é a velocidade de transmissão dos impulsos, transformando o pensamento deliberado em instinto técnico de baixo custo energético, o que fundamenta a maestria biológica em qualquer área do desempenho humano.</p>
-                        <a href="https://www.nature.com/articles/nn.3512" target="_blank" class="link-deep">Arquivos Neurais →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Neurogénese Adulta</h4>
+                        <p class="text-sm text-white leading-relaxed">O cérebro produz novos neurónios no hipocampo durante toda a vida. A aprendizagem complexa estimula a proteína BDNF, provando que o hardware neuronal é dinâmico.</p>
                     </div>
                 </div>
             </section>
 
             <!-- 7. ETOLOGIA -->
-            <section class="blacklist-card rounded-sm">
+            <section class="blacklist-card rounded-sm border-cyan-900/30">
                 <div class="p-10 border-b border-emerald-900/20">
                     <h2 class="text-sm font-bold text-white uppercase tracking-[0.4em] abyssal-glow">Etologia</h2>
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Linguagem Codificada em Cães de Pradaria</h4>
-                        <p class="text-sm text-white leading-relaxed">Pesquisas revelaram que estes roedores possuem um sistema de vocalização complexo que utiliza frequências moduladas como adjetivos. Eles conseguem descrever a cor das roupas de um humano ou a velocidade de um predador, demonstrando uma abstração linguística e cognitiva que subverte a barreira clássica entre o instinto cego e o logos racional.</p>
-                        <a href="https://www.scientificamerican.com/article/prairie-dog-language-deciphered/" target="_blank" class="link-deep">Espécie →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Etiquetas Vocais em Elefantes</h4>
+                        <p class="text-sm text-white leading-relaxed">Elefantes utilizam vocalizações específicas que funcionam como 'nomes' individuais. Esta tecnologia linguística indica uma consciência individualizada que desafia a singularidade humana.</p>
+                        <a href="https://www.nature.com/articles/s41559-024-02420-w" target="_blank" class="link-deep">Espécie →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Cultura e Dialetos em Jubartes</h4>
-                        <p class="text-sm text-white leading-relaxed">As baleias jubarte transmitem canções complexas como tendências culturais que cruzam o Pacífico em meses. A adoção de novos 'hits' sonoros por diferentes populações prova a existência de uma estética compartilhada e de um aprendizado social que não depende de fatores genéticos, funcionando como uma verdadeira rede social oceânica e sonora.</p>
-                        <a href="https://royalsocietypublishing.org/doi/10.1098/rsos.181454" target="_blank" class="link-deep">Espécie →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Cognição e Decepção em Corvídeos</h4>
-                        <p class="text-sm text-white leading-relaxed">Corvos da Caledónia possuem a capacidade de 'Teoria da Mente', sabendo quando estão a ser observados por rivais. Se detetam um observador, fingem esconder comida para protegê-la depois em segredo, provando um planeamento de futuro e uma compreensão da perspetiva alheia que define a inteligência executiva de topo no reino animal não humano.</p>
-                        <a href="https://www.science.org/doi/10.1126/science.aaf1759" target="_blank" class="link-deep">Espécie →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Guerra das Orcas no Gibraltar</h4>
+                        <p class="text-sm text-white leading-relaxed">Afundamento coordenado de iates como resposta técnica à interferência humana, transmitido culturalmente entre gerações como estratégia de defesa de espécie.</p>
                     </div>
                 </div>
             </section>
@@ -431,20 +392,12 @@
                 </div>
                 <div class="p-4 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">1. Desastre e Astrologia Arcaica</h4>
-                        <p class="text-sm text-white leading-relaxed">Do grego *'dus-'* (mau) + *'astron'* (astro). A palavra preserva a cosmovisão técnica da antiguidade de que catástrofes e eventos funestos eram causadas pelo desalinhamento das estrelas ou influência celeste adversa, unindo a astronomia arcaica ao destino humano.</p>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">1. Sarcasmo e a Carne Dilacerada</h4>
+                        <p class="text-sm text-white leading-relaxed">Do grego *'sarkasmos'* (morder os lábios em raiva). Preserva a agressividade técnica de dilacerar a carne via linguagem corrosiva.</p>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">2. Entusiasmo e Posse Divina</h4>
-                        <p class="text-sm text-white leading-relaxed">Do grego *'en-'* (dentro) + *'theos'* (deus). Significava literalmente 'ter um deus no interior'. A inspiração não era vista como um mérito pessoal ou técnico, mas como uma possessão divina criativa que movia o indivíduo além da sua razão habitual e da lógica cotidiana.</p>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">3. Hipócrita e o Palco Grego</h4>
-                        <p class="text-sm text-white leading-relaxed">Do grego *'hypokrites'* (actor). Originalmente descrevia o intérprete que usava uma máscara no palco para assumir uma verdade fictícia perante o público. O termo transmutou-se para descrever quem finge ser o que não é para cumprir um papel na assembleia pública social.</p>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">4. Nostalgia e a Dor do Regresso</h4>
-                        <p class="text-sm text-white leading-relaxed">Do grego *'nostos'* (regresso a casa) + *'algos'* (dor/sofrimento). Cunhada originalmente em 1688 como um diagnóstico médico para mercenários suíços, a palavra descreve a patologia técnica do desejo de voltar, onde a memória atua como um veneno biológico que paralisa o presente.</p>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-2">2. Sincero e a Cera Transparente</h4>
+                        <p class="text-sm text-white leading-relaxed">Do latim *'sine cera'*. Refere-se a mármore sem fendas escondidas por cera. Define a integridade técnica do Ser sem máscaras.</p>
                     </div>
                 </div>
             </section>
@@ -456,19 +409,13 @@
                 </div>
                 <div class="p-2 space-y-2 flex-grow">
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Ciro II (O Grande) e a Hegemonia Ética</h4>
-                        <p class="text-sm text-white leading-relaxed">Fundador do Império Aqueménida, Ciro foi o precursor da estratégia militar baseada na integração cultural e tolerância religiosa. O seu 'Cilindro de Ciro' é considerado a primeira carta de direitos humanos da história, provando que a hegemonia política de longo prazo depende da infraestrutura ética.</p>
-                        <a href="https://www.britannica.com/biography/Cyrus-the-Great" target="_blank" class="link-deep">Documentação →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">1. Marco Aurélio: Engenharia do Veto</h4>
+                        <p class="text-sm text-white leading-relaxed">O imperador cujas 'Meditações' funcionam como terminal de programação para a vontade. Praticava a não-responsividade ativa diante do caos.</p>
+                        <a href="https://plato.stanford.edu/entries/marcus-aurelius/" target="_blank" class="link-deep">Documentação →</a>
                     </div>
                     <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Aníbal Barca e a Guerra Assimétrica</h4>
-                        <p class="text-sm text-white leading-relaxed">O general cartaginês mestre da tática de 'duplo envolvimento' demonstrada em Canas. Aníbal operou durante 15 anos em território inimigo sem apoio logístico externo, utilizando a psicologia de combate e o conhecimento geográfico como tecnologias de guerra que desafiaram a hegemonia de Roma por gerações.</p>
-                        <a href="https://www.history.com/topics/ancient-rome/hannibal" target="_blank" class="link-deep">Documentação →</a>
-                    </div>
-                    <div class="individual-point">
-                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">3. Péricles de Atenas e a Hegemonia Cultural</h4>
-                        <p class="text-sm text-white leading-relaxed">O arquiteto da Idade de Ouro ateniense, Péricles fundiu a liderança militar com uma visão política de vanguarda. Através do financiamento técnico das artes e da reconstrução da Acrópole, ele transformou o poder naval de Atenas em hegemonia cultural perpétua, definindo o conceito moderno de *soft power*.</p>
-                        <a href="https://www.britannica.com/biography/Pericles-Athenian-statesman" target="_blank" class="link-deep">Documentação →</a>
+                        <h4 class="text-xs font-bold text-emerald-500 uppercase mb-3">2. Ada Lovelace: Poesia Analítica</h4>
+                        <p class="text-sm text-white leading-relaxed">Primeira programadora; percebeu que máquinas poderiam processar música e símbolos, unindo misticismo e rigor matemático.</p>
                     </div>
                 </div>
             </section>
@@ -478,19 +425,15 @@
                 <div class="absolute -right-40 -top-40 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] group-hover:bg-emerald-500/10 transition-colors duration-1000"></div>
                 <div class="relative z-10 max-w-5xl mx-auto space-y-12">
                     <span class="text-emerald-500 text-[10px] font-bold uppercase tracking-[0.6em] opacity-40">VII</span>
-                    <h2 class="serif text-5xl text-white italic tracking-tighter abyssal-glow leading-none">O Culto de Mistérios de Elêusis</h2>
+                    <h2 class="serif text-5xl text-white italic tracking-tighter abyssal-glow leading-none">Alquimia e Individuação</h2>
                     <div class="grid md:grid-cols-2 gap-16 items-start">
                         <div class="text-slate-100 text-xl font-light italic leading-relaxed space-y-10 surreal-accent">
-                            <p>Durante quase dois milénios, a elite intelectual e política da Grécia Antiga viajava até Elêusis para ritos de iniciação secretos dedicados a Deméter e Perséfone. O objetivo era técnico e existencial: erradicar o medo da morte através de uma experiência direta de renascimento psíquico. O rito culminava no interior do *Telesterion*, um templo de acústica desenhada para a indução do êxtase coletivo.</p>
-                            <p>O ponto alto da iniciação envolvia a ingestão do *Kykeon*, bebida ritualística que pesquisadores modernos sugerem conter ergótipo, um precursor natural do LSD presente nos fungos do centeio. Esta "tecnologia de visão" permitia ao iniciado contemplar as verdades arquetípicas da vida e da morte em um estado de hiperlucidez. Ao emergir das câmaras subterrâneas, o indivíduo não mais temia a dissolução biológica, percebendo-se como parte de um fluxo cósmico ininterrupto.</p>
+                            <p>Jung percebeu que o *Opus Magnum* — da *Nigredo* à *Rubedo* — era a metáfora técnica para a individuação: o resgate da luz do Self a partir da sombra biológica. A transmutação não era sobre metais, mas sobre a engenharia da consciência básica capaz de suportar a tensão absoluta entre o Logos e o Instinto.</p>
                         </div>
                         <div class="bg-emerald-950/5 p-10 border border-emerald-500/5 backdrop-blur-md">
-                            <h4 class="text-emerald-500 font-bold mb-6 text-[10px] uppercase tracking-widest abyssal-glow">Manuscrito</h4>
-                            <div class="text-sm text-slate-400 italic border-l-2 border-emerald-500/20 pl-6 mb-10 leading-relaxed space-y-8">
-                                <p>"Feliz é aquele que, tendo visto estas coisas, entra no mundo subterrâneo; ele conhece o fim da vida e conhece o seu início dado por Zeus. Ele não é mais um estranho entre as sombras, mas um cidadão da luz que nunca se apaga. Aquele que atravessa o véu de Elêusis morre antes de morrer, e por isso vive para sempre na memória do Ser." — Píndaro</p>
-                                <p>Este fragmento é uma das poucas alusões permitidas ao rito de Elêusis. Píndaro descreve a 'Gnosis' como uma tecnologia de libertação absoluta: a percepção técnica de que a morte biológica é apenas uma transmutação da consciência. O Manuscrito atesta que a experiência ritualística não era uma simples doutrina teológica, mas uma evidência sensorial que removia o véu do medo que paralisa a vontade humana.</p>
-                            </div>
-                            <a href="https://www.britannica.com/topic/Eleusinian-Mysteries" target="_blank" class="inline-flex items-center gap-4 bg-emerald-700 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(5,150,105,0.2)] hover:bg-emerald-600 transition-all">Estudo Integral</a>
+                            <h4 class="text-emerald-500 font-bold mb-6 text-[10px] uppercase tracking-widest abyssal-glow italic">Manuscrito</h4>
+                            <p class="text-sm text-slate-400 italic border-l-2 border-emerald-500/20 pl-6 mb-10 leading-relaxed">"O alquimista não opera sobre o chumbo, mas sobre a própria cegueira, transmutando a reação involuntária na escolha deliberada." — C.G. Jung</p>
+                            <a href="https://www.britannica.com/topic/alchemy" target="_blank" class="inline-flex items-center gap-4 bg-emerald-700 text-white px-10 py-4 font-bold text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(5,150,105,0.2)] hover:bg-emerald-600 transition-all rounded-sm">Estudo Integral</a>
                         </div>
                     </div>
                 </div>
@@ -500,40 +443,29 @@
     </main>
 
     <!-- SAÍDA -->
-    <footer class="py-48 px-6 border-t border-emerald-950/20 bg-black relative z-20 overflow-hidden">
+    <footer class="py-48 px-6 border-t border-emerald-950/20 bg-black relative z-20 overflow-hidden text-center">
         <div class="max-w-5xl mx-auto space-y-24">
-            <div class="text-center">
-                <span class="text-emerald-900 text-[10px] font-bold uppercase tracking-[0.6em] abyssal-glow">Saída</span>
-            </div>
-            
-            <div class="bg-emerald-950/5 p-20 rounded-sm border border-emerald-500/5 relative shadow-[0_0_100px_rgba(0,0,0,0.8)]">
-                <div class="absolute -top-16 -left-16 text-[18rem] serif text-emerald-500/5 pointer-events-none italic font-black select-none">“</div>
+            <span class="text-emerald-900 text-[10px] font-bold uppercase tracking-[0.6em] abyssal-glow">Saída</span>
+            <div class="bg-emerald-950/5 p-20 rounded-sm border border-emerald-500/5 relative shadow-[0_0_100px_rgba(0,0,0,0.8)] mx-auto">
+                <div class="absolute -top-16 -left-16 text-[18rem] serif text-emerald-500/5 pointer-events-none select-none italic font-black">“</div>
                 <div class="relative z-10 space-y-12">
-                    <p class="text-3xl md:text-4xl serif text-slate-100 leading-relaxed italic text-center px-16 font-extralight tracking-tight abyssal-glow">
-                        “Tudo o que é sólido desmancha no ar, tudo o que é sagrado é profanado, e os homens são finalmente forçados a enfrentar com sentidos sóbrios suas condições reais de vida e suas relações com seus semelhantes.”
+                    <p class="text-3xl md:text-4xl serif text-slate-100 leading-relaxed italic px-16 font-extralight tracking-tight abyssal-glow">
+                        “Viver é muito perigoso... Porque aprender a viver é que é o viver, mesmo. O sertão é onde o pensamento da gente começa a fazer conta, de trás para diante.”
                     </p>
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 pt-16 border-t border-emerald-500/10">
-                        <div class="space-y-4 text-center md:text-left">
-                            <h4 class="text-xl font-bold text-white tracking-[0.2em] uppercase abyssal-glow leading-none">Karl Marx & Friedrich Engels</h4>
-                            <p class="text-sm font-medium text-emerald-500 uppercase tracking-widest italic opacity-60">Manifesto Comunista (1848)</p>
-                        </div>
-                        <div class="max-w-md text-sm text-zinc-500 leading-relaxed text-center md:text-right italic">
-                            <p><strong>Exegese:</strong> Uma análise bruta da modernidade líquida, onde as tradições milenares são consumidas pela aceleração técnica constante e inelutável do capital industrial.</p>
-                        </div>
+                    <div class="pt-16 border-t border-emerald-500/10">
+                        <h4 class="text-xl font-bold text-white tracking-[0.2em] uppercase abyssal-glow">João Guimarães Rosa</h4>
+                        <p class="text-sm font-medium text-emerald-500 uppercase tracking-widest italic opacity-60 mt-4">Grande Sertão: Veredas (1956)</p>
                     </div>
                 </div>
             </div>
-
-            <div class="text-center pt-24 space-y-4 opacity-30">
-                <p class="text-[9px] font-bold text-emerald-900 uppercase tracking-[0.6em]">Protocolo Blacklist | Gemini AI Systems</p>
+            <div class="pt-24 space-y-4 opacity-30">
+                <p class="text-[9px] font-bold text-emerald-900 uppercase tracking-[0.6em]">Protocolo Blacklist | Gemini AI System</p>
                 <p class="text-[9px] text-emerald-950 uppercase tracking-[0.3em]">David Richard . Decifra-te, ou te devora . 2026</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // TOKEN DE INTERFACE DEFINIDO PELO UTILIZADOR
-        // David: Certifique-se de que a 'Generative Language API' está ATIVA no Google Cloud Console.
         const apiKey = "AIzaSyBFNSm4wx3hX-9irMkCmZTsD69bzKf39IU"; 
 
         function toggleTerminal() {
@@ -554,37 +486,25 @@
                 resultDiv.classList.add('hidden');
                 loading.style.display = 'block';
 
-                // Prompt especializado para exegese analítica
-                const systemPrompt = "És um assistente editorial do periódico 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo solicitado, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal com tom clínico e analítico.";
+                const systemPrompt = "És um assistente editorial da 'Blacklist'. Fornece um aprofundamento extenso, técnico e erudito sobre o termo, focando em factos, bibliografia e implicações multidisciplinares. Responde em Português de Portugal com tom clínico.";
 
-                const fetchWithRetry = async (url, options, retries = 5, delay = 1000) => {
+                const fetchWithRetry = async (url, options, retries = 3, delay = 1500) => {
                     for (let i = 0; i < retries; i++) {
                         try {
                             const res = await fetch(url, options);
                             if (res.ok) return res;
-                            
-                            // Se o erro for 403 (Proibido), é provável que a API não esteja ativa ou a chave seja inválida.
-                            // Se for 404, o modelo ou endpoint pode estar incorreto.
-                            if (res.status === 403 || res.status === 404) {
-                                const errData = await res.json();
-                                throw new Error(`HTTP ${res.status}: ${errData.error?.message || 'Acesso negado'}`);
-                            }
-                            
-                            if (res.status === 429 || res.status >= 500) {
-                                await new Promise(r => setTimeout(r, delay));
-                                delay *= 2;
-                                continue;
-                            }
-                            
-                            throw new Error(`HTTP ${res.status}`);
+                            if (res.status === 403) throw new Error("A API ainda não propagou ou o modelo está restrito. Verifique se a Generative Language API está ativa no Google Cloud.");
+                            if (res.status === 429) { await new Promise(r => setTimeout(r, delay * 2)); continue; }
+                            throw new Error(`Erro HTTP ${res.status}`);
                         } catch (e) {
                             if (i === retries - 1) throw e;
+                            await new Promise(r => setTimeout(r, delay));
                         }
                     }
                 };
 
                 try {
-                    // Endpoint utilizando v1beta para garantir compatibilidade com systemInstruction
+                    // Modelo 1.5 Flash - Estável para Chaves de Produção
                     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                     
                     const response = await fetchWithRetry(url, {
@@ -597,17 +517,12 @@
                     });
                     
                     const data = await response.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "A inferência não retornou dados analíticos.";
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem dados analíticos.";
                     
-                    resultDiv.innerHTML = `<div class="border-l-2 border-emerald-500/30 pl-4 py-2 text-slate-300 text-xs leading-relaxed">${text}</div>`;
+                    resultDiv.innerHTML = `<div class="border-l-2 border-emerald-500/30 pl-6 py-4 text-slate-300 text-[13px] leading-relaxed">${text}</div>`;
                     resultDiv.classList.remove('hidden');
                 } catch (e) {
-                    console.error(e);
-                    resultDiv.innerHTML = `<div class="text-red-500/70 uppercase text-[9px] tracking-widest space-y-2">
-                        <p>Falha na inferência técnica.</p>
-                        <p class="text-[8px] opacity-60">Causa: ${e.message}</p>
-                        <p class="text-[7px] lowercase italic">Dica: Verifique se a 'Generative Language API' está ativa no Google Cloud Console para esta chave.</p>
-                    </div>`;
+                    resultDiv.innerHTML = `<div class="text-red-500/70 uppercase text-[9px] tracking-widest p-4 border border-red-500/10">Falha na Inferência: ${e.message}</div>`;
                     resultDiv.classList.remove('hidden');
                 } finally {
                     loading.style.display = 'none';
